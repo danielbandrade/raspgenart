@@ -24,10 +24,10 @@ function Spring(_x, _y, _s, _d, _m, _k_in, _others, _id){
     this.mass = _m;
     this.k = _k_in;
     this.damp = _d;
-    this.rest_posx = _x;
-    this.rest_posy = _y;
+    this.rest_posx = 0;
+    this.rest_posy = 0;
     
-    this.velx = 5;
+    this.velx = 0;
     this.vely = 0;
     this.accel = 0;
     this.force = 0;
@@ -38,7 +38,7 @@ function Spring(_x, _y, _s, _d, _m, _k_in, _others, _id){
     this.update = function() {
       
         
-        this.rest_posy = this.rest_posy ;
+        this.rest_posy = mouseY;
         this.rest_posx = mouseX;
         
         this.force = - this.k * (this.y_pos - this.rest_posy);
@@ -68,22 +68,18 @@ function Spring(_x, _y, _s, _d, _m, _k_in, _others, _id){
 
 function draw() {
   
-  
-  
   background('#b20a2c');
   
-  springs[0] = new Spring(300,300,40,0.98,8.0,0.1,springs,0);
+  springs[0] = new Spring(300,300,75,0.98,8.0,0.1,springs,0);
   
   springs[0].update();
   
   springs[0].display();
   
-  springs[1] = new Spring(550,550,40,0.98,8.0,0.1,springs,0);
+  springs[1] = new Spring(550,550,75,0.98,5.0,0.5,springs,1);
   
   springs[1].update();
   
   springs[1].display();
-  
-  
-  
+   
 }
